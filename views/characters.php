@@ -53,10 +53,10 @@ $characters = $stmt->fetchAll();
         </div>
         
         <div class="profile-actions">
-            <a href="character_detail.php?id=<?= $c['id'] ?>" class="btn-view">👁️ View</a>
+            <a href="character_detail.php?id=<?= $c['id'] ?>" class="btn-view">View</a>
             <?php if($_SESSION['role'] == 'admin'): ?>
-                <a href="edit_character.php?id=<?= $c['id'] ?>" class="btn-edit">✏️ Edit</a>
-                <a href="/aot-website/actions/delete_character.php?id=<?= $c['id'] ?>" class="btn-delete" onclick="return confirmDelete('<?= addslashes($c['name']) ?>')">🗑️ Delete</a>
+                <a href="edit_character.php?id=<?= $c['id'] ?>" class="btn-edit">Edit</a>
+                <a href="/aot-website/actions/delete_character.php?id=<?= $c['id'] ?>" class="btn-delete" onclick="return confirmDelete('<?= addslashes($c['name']) ?>')">Delete</a>
             <?php endif; ?>
         </div>
     </div>
