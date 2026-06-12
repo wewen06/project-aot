@@ -12,9 +12,9 @@ $episodes = $stmt->fetchAll();
 ?>
 
 <div class="characters-header">
-    <h2>🎬 ANIME EPISODES</h2>
+    <h2>ANIME EPISODES</h2>
     <?php if($_SESSION['role'] == 'admin'): ?>
-        <a href="add_episode.php" class="btn-add">+ ADD NEW EPISODE</a>
+        <a href="add_episode.php" class="btn-add">ADD EPISODE</a>
     <?php endif; ?>
 </div>
 
@@ -30,21 +30,25 @@ $episodes = $stmt->fetchAll();
     <?php foreach($episodes as $e): ?>
     <div class="profile-card">
         <div class="profile-avatar episode-avatar">
-            <div class="avatar-icon">🎬</div>
+            <?php if(!empty($e['image_url'])): ?>
+                <img src="/aot-website/<?= htmlspecialchars($e['image_url']) ?>" alt="<?= htmlspecialchars($e['title']) ?>">
+            <?php else: ?>
+                <div class="avatar-icon">🎬</div>
+            <?php endif; ?>
         </div>
         <div class="profile-info">
             <h3><?= htmlspecialchars($e['title']) ?></h3>
             <div class="profile-badge">
-                <span class="affiliation">📺 Season <?= $e['season'] ?></span>
-                <span class="rank">🔢 Episode <?= $e['episode_number'] ?></span>
+                <span class="affiliation">Season <?= $e['season'] ?></span>
+                <span class="rank">Episode <?= $e['episode_number'] ?></span>
             </div>
-            <p class="profile-desc"><?= !empty($e['air_date']) ? '📅 Aired: ' . date('d M Y', strtotime($e['air_date'])) : '📅 TBA' ?></p>
+            <p class="profile-desc"><?= !empty($e['air_date']) ? 'Aired: ' . date('d M Y', strtotime($e['air_date'])) : 'TBA' ?></p>
         </div>
         <div class="profile-actions">
-            <a href="episode_detail.php?id=<?= $e['id'] ?>" class="btn-view">👁️ View</a>
+            <a href="episode_detail.php?id=<?= $e['id'] ?>" class="btn-view">View</a>
             <?php if($_SESSION['role'] == 'admin'): ?>
-                <a href="edit_episode.php?id=<?= $e['id'] ?>" class="btn-edit">✏️ Edit</a>
-                <a href="/aot-website/actions/delete_episode.php?id=<?= $e['id'] ?>" class="btn-delete" onclick="return confirm('Hapus episode <?= addslashes($e['title']) ?>?')">🗑️ Delete</a>
+                <a href="edit_episode.php?id=<?= $e['id'] ?>" class="btn-edit">Edit</a>
+                <a href="/aot-website/actions/delete_episode.php?id=<?= $e['id'] ?>" class="btn-delete" onclick="return confirm('Hapus episode <?= addslashes($e['title']) ?>?')">Delete</a>
             <?php endif; ?>
         </div>
     </div>

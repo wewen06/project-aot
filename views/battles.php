@@ -12,9 +12,9 @@ $battles = $stmt->fetchAll();
 ?>
 
 <div class="characters-header">
-    <h2>🗺️ EPIC BATTLES</h2>
+    <h2>EPIC BATTLES</h2>
     <?php if($_SESSION['role'] == 'admin'): ?>
-        <a href="add_battle.php" class="btn-add">+ ADD NEW BATTLE</a>
+        <a href="add_battle.php" class="btn-add">ADD BATTLE</a>
     <?php endif; ?>
 </div>
 
@@ -30,21 +30,25 @@ $battles = $stmt->fetchAll();
     <?php foreach($battles as $b): ?>
     <div class="profile-card">
         <div class="profile-avatar battle-avatar">
-            <div class="avatar-icon">🗺️</div>
+            <?php if(!empty($b['image_url'])): ?>
+                <img src="/aot-website/<?= htmlspecialchars($b['image_url']) ?>" alt="<?= htmlspecialchars($b['name']) ?>">
+            <?php else: ?>
+                <div class="avatar-icon">🗺️</div>
+            <?php endif; ?>
         </div>
         <div class="profile-info">
             <h3><?= htmlspecialchars($b['name']) ?></h3>
             <div class="profile-badge">
-                <span class="affiliation">📍 <?= htmlspecialchars($b['location'] ?? 'Unknown') ?></span>
-                <span class="rank">🏆 <?= htmlspecialchars($b['winner'] ?? 'Unknown') ?></span>
+                <span class="affiliation"><?= htmlspecialchars($b['location'] ?? 'Unknown') ?></span>
+                <span class="rank"><?= htmlspecialchars($b['winner'] ?? 'Unknown') ?></span>
             </div>
             <p class="profile-desc">A legendary battle that shaped the fate of humanity.</p>
         </div>
         <div class="profile-actions">
-            <a href="battle_detail.php?id=<?= $b['id'] ?>" class="btn-view">👁️ View</a>
+            <a href="battle_detail.php?id=<?= $b['id'] ?>" class="btn-view">View</a>
             <?php if($_SESSION['role'] == 'admin'): ?>
-                <a href="edit_battle.php?id=<?= $b['id'] ?>" class="btn-edit">✏️ Edit</a>
-                <a href="/aot-website/actions/delete_battle.php?id=<?= $b['id'] ?>" class="btn-delete" onclick="return confirm('Hapus battle <?= addslashes($b['name']) ?>?')">🗑️ Delete</a>
+                <a href="edit_battle.php?id=<?= $b['id'] ?>" class="btn-edit">Edit</a>
+                <a href="/aot-website/actions/delete_battle.php?id=<?= $b['id'] ?>" class="btn-delete" onclick="return confirm('Hapus battle <?= addslashes($b['name']) ?>?')">Delete</a>
             <?php endif; ?>
         </div>
     </div>

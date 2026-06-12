@@ -1,9 +1,4 @@
--- Jalankan file ini di phpMyAdmin atau terminal MySQL
 
-CREATE DATABASE IF NOT EXISTS aot_website;
-USE aot_website;
-
--- Tabel users
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -18,7 +13,8 @@ CREATE TABLE characters (
     name VARCHAR(100) NOT NULL,
     affiliation VARCHAR(100),
     rank VARCHAR(50),
-    image_url VARCHAR(255)
+    image_url VARCHAR(255),
+    description TEXT
 );
 
 -- Tabel battles
@@ -27,7 +23,9 @@ CREATE TABLE battles (
     name VARCHAR(100) NOT NULL,
     location VARCHAR(100),
     winner VARCHAR(100),
-    date DATE
+    date DATE,
+    image_url VARCHAR(255),
+    description TEXT
 );
 
 -- Tabel episodes
@@ -36,7 +34,9 @@ CREATE TABLE episodes (
     title VARCHAR(150) NOT NULL,
     season INT,
     episode_number INT,
-    air_date DATE
+    air_date DATE,
+    image_url VARCHAR(255),
+    description TEXT
 );
 
 -- Data contoh
@@ -45,6 +45,7 @@ INSERT INTO users (username, password, role) VALUES
 ('e_yeager', MD5('tatakae'), 'user');
 
 INSERT INTO characters (name, affiliation, rank) VALUES
+('Armin Arlert', 'Survey Corps', 'Strategiest'),
 ('Eren Yeager', 'Survey Corps', 'Soldier'),
 ('Levi Ackerman', 'Survey Corps', 'Captain'),
 ('Mikasa Ackerman', 'Survey Corps', 'Soldier');

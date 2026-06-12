@@ -9,35 +9,40 @@ include 'includes/header.php';
 
 <!-- HERO SECTION ADMIN (RATA KIRI) -->
 <section class="hero" style="min-height: 50vh;">
-    <div class="hero-content" style="text-align: left; margin-left: 0; margin-right: auto;">
-        <span class="hero-badge">ADMIN PANEL</span>
-        <h1>Welcome, <br><span>Commander</span><br><?= htmlspecialchars($_SESSION['username']) ?></h1>
-        <p class="hero-desc" style="margin-left: 0; margin-right: 0;">
-            You have full authority over the Survey Corps database. <br>
-            Manage characters, battles, and episodes with full CRUD access.
-        </p>
+    <div class="hero-flex">
+        <div class="hero-content" style="text-align: left; margin-left: 0; margin-right: auto;">
+            <span class="hero-badge">ADMIN PANEL</span>
+            <h1>Welcome, <br><span>Commander</span><br><?= htmlspecialchars($_SESSION['username']) ?></h1>
+            <p class="hero-desc" style="margin-left: 0; margin-right: 0;">
+                You have full authority over the Survey Corps database. <br>
+                Manage characters, battles, and episodes with full CRUD access.
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="/aot-website/assets/images/aot-logo.png" alt="Attack on Titan" class="hero-logo">
+        </div>
     </div>
 </section>
 
 <!-- ADMIN CARDS GRID (CENTERED) -->
 <div class="admin-grid">
     <div class="admin-card">
-        <div style="font-size: 3rem;">⚔️</div>
+        <img src="/aot-website/assets/images/character-icon.png" alt="Characters Icon" class="admin-card-icon">
         <h3>Characters</h3>
         <p>Create, Read, Update, Delete</p>
-        <a href="characters.php" class="btn-primary" style="display: inline-block;">Manage</a>
+        <a href="characters.php" class="btn-add">Manage</a>
     </div>
     <div class="admin-card">
-        <div style="font-size: 3rem;">🗺️</div>
+        <img src="/aot-website/assets/images/battle-icon.png" alt="Battles Icon" class="admin-card-icon">
         <h3>Battles</h3>
         <p>Create, Read, Update, Delete</p>
-        <a href="battles.php" class="btn-primary" style="display: inline-block;">Manage</a>
+        <a href="battles.php" class="btn-add">Manage</a>
     </div>
     <div class="admin-card">
-        <div style="font-size: 3rem;">🎬</div>
+        <img src="/aot-website/assets/images/episode-icon.png" alt="Episodes Icon" class="admin-card-icon">
         <h3>Episodes</h3>
         <p>Create, Read, Update, Delete</p>
-        <a href="episodes.php" class="btn-primary" style="display: inline-block;">Manage</a>
+        <a href="episodes.php" class="btn-add">Manage</a>
     </div>
 </div>
 

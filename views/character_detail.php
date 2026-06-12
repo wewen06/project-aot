@@ -23,8 +23,8 @@ if(!$c) {
     
     <div class="detail-card">
         <div class="detail-avatar">
-            <?php if(!empty($c['image_url']) && filter_var($c['image_url'], FILTER_VALIDATE_URL)): ?>
-                <img src="<?= htmlspecialchars($c['image_url']) ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+            <?php if(!empty($c['image_url'])): ?>
+                <img src="/aot-website/<?= htmlspecialchars($c['image_url']) ?>" alt="<?= htmlspecialchars($c['name']) ?>">
             <?php else: ?>
                 <div class="detail-icon">⚔️</div>
             <?php endif; ?>
@@ -34,8 +34,8 @@ if(!$c) {
             <h1><?= htmlspecialchars($c['name']) ?></h1>
             
             <div class="detail-badges">
-                <span class="badge affiliation">🏢 <?= htmlspecialchars($c['affiliation'] ?? 'Survey Corps') ?></span>
-                <span class="badge rank">🎖️ <?= htmlspecialchars($c['rank'] ?? 'Soldier') ?></span>
+                <span class="badge affiliation"><?= htmlspecialchars($c['affiliation'] ?? 'Survey Corps') ?></span>
+                <span class="badge rank"><?= htmlspecialchars($c['rank'] ?? 'Soldier') ?></span>
             </div>
             
             <div class="detail-section">
@@ -45,8 +45,8 @@ if(!$c) {
             
             <?php if($_SESSION['role'] == 'admin'): ?>
                 <div class="detail-actions">
-                    <a href="edit_character.php?id=<?= $c['id'] ?>" class="btn-edit">✏️ Edit Character</a>
-                    <a href="/aot-website/actions/delete_character.php?id=<?= $c['id'] ?>" class="btn-delete" onclick="return confirmDelete('<?= addslashes($c['name']) ?>')">🗑️ Delete Character</a>
+                    <a href="edit_character.php?id=<?= $c['id'] ?>" class="btn-edit">Edit Character</a>
+                    <a href="/aot-website/actions/delete_character.php?id=<?= $c['id'] ?>" class="btn-delete" onclick="return confirmDelete('<?= addslashes($c['name']) ?>')">Delete Character</a>
                 </div>
             <?php endif; ?>
         </div>

@@ -12,9 +12,9 @@ $characters = $stmt->fetchAll();
 ?>
 
 <div class="characters-header">
-    <h2>⚔️ SURVEY CORPS CHARACTERS</h2>
+    <h2>SURVEY CORPS CHARACTERS</h2>
     <?php if($_SESSION['role'] == 'admin'): ?>
-        <a href="add_character.php" class="btn-add">+ ADD NEW CHARACTER</a>
+        <a href="add_character.php" class="btn-add">ADD CHARACTER</a>
     <?php endif; ?>
 </div>
 
@@ -31,8 +31,8 @@ $characters = $stmt->fetchAll();
     <?php foreach($characters as $c): ?>
     <div class="profile-card">
         <div class="profile-avatar">
-            <?php if(!empty($c['image_url']) && filter_var($c['image_url'], FILTER_VALIDATE_URL)): ?>
-                <img src="<?= htmlspecialchars($c['image_url']) ?>" alt="<?= htmlspecialchars($c['name']) ?>">
+            <?php if(!empty($c['image_url'])): ?>
+                <img src="/aot-website/<?= htmlspecialchars($c['image_url']) ?>" alt="<?= htmlspecialchars($c['name']) ?>">
             <?php else: ?>
                 <div class="avatar-icon">⚔️</div>
             <?php endif; ?>

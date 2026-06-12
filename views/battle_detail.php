@@ -23,15 +23,19 @@ if(!$b) {
     
     <div class="detail-card">
         <div class="detail-avatar battle-detail-avatar">
-            <div class="detail-icon">🗺️</div>
+            <?php if(!empty($b['image_url'])): ?>
+                <img src="/aot-website/<?= htmlspecialchars($b['image_url']) ?>" alt="<?= htmlspecialchars($b['name']) ?>">
+            <?php else: ?>
+                <div class="detail-icon">🗺️</div>
+            <?php endif; ?>
         </div>
         
         <div class="detail-info">
             <h1><?= htmlspecialchars($b['name']) ?></h1>
             
             <div class="detail-badges">
-                <span class="badge location">📍 <?= htmlspecialchars($b['location'] ?? 'Unknown Location') ?></span>
-                <span class="badge winner">🏆 Winner: <?= htmlspecialchars($b['winner'] ?? 'Unknown') ?></span>
+                <span class="badge location"><?= htmlspecialchars($b['location'] ?? 'Unknown Location') ?></span>
+                <span class="badge winner">Winner: <?= htmlspecialchars($b['winner'] ?? 'Unknown') ?></span>
             </div>
             
             <div class="detail-section">
@@ -46,8 +50,8 @@ if(!$b) {
             
             <?php if($_SESSION['role'] == 'admin'): ?>
                 <div class="detail-actions">
-                    <a href="edit_battle.php?id=<?= $b['id'] ?>" class="btn-edit">✏️ Edit Battle</a>
-                    <a href="/aot-website/actions/delete_battle.php?id=<?= $b['id'] ?>" class="btn-delete" onclick="return confirmDelete('<?= addslashes($b['name']) ?>')">🗑️ Delete Battle</a>
+                    <a href="edit_battle.php?id=<?= $b['id'] ?>" class="btn-edit">Edit Battle</a>
+                    <a href="/aot-website/actions/delete_battle.php?id=<?= $b['id'] ?>" class="btn-delete" onclick="return confirmDelete('<?= addslashes($b['name']) ?>')">Delete Battle</a>
                 </div>
             <?php endif; ?>
         </div>

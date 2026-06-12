@@ -23,7 +23,11 @@ if(!$e) {
     
     <div class="detail-card">
         <div class="detail-avatar episode-detail-avatar">
-            <div class="detail-icon">🎬</div>
+            <?php if(!empty($e['image_url'])): ?>
+                <img src="/aot-website/<?= htmlspecialchars($e['image_url']) ?>" alt="<?= htmlspecialchars($e['title']) ?>">
+            <?php else: ?>
+                <div class="detail-icon">🎬</div>
+            <?php endif; ?>
         </div>
         
         <div class="detail-info">
